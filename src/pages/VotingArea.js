@@ -23,6 +23,20 @@ const VotingArea = () => {
   //     choicess.push(choicename[i])
   //   }
   //   console.log(choicess)
+  // async function fetchWithTimeout(resource, options = {}) {
+  //   const { timeout = 31000 } = options;
+
+  //   const controller = new AbortController();
+  //   const id = setTimeout(() => controller.abort(), timeout);
+
+  //   const response = await fetch(resource, {
+  //     ...options,
+  //     signal: controller.signal,
+  //   });
+  //   clearTimeout(id);
+
+  //   return response;
+  // }
   let getelection = async () => {
     let response = await fetch("/api/getElection/", {
       credentials: "include",
@@ -35,11 +49,15 @@ const VotingArea = () => {
       }),
     });
     let data = await response.json();
-    console.log(data);
+    if (response.status != 200) {
+      alert("Voting Failed!!!\n Redirecting.....");
+      window.location.reload(false);
+    }
+    // console.log(data);
     setElection(data);
   };
   const pp = election.choices_name;
-  console.log(pp);
+  // console.log(pp);
   const candidates = pp;
   const choices = candidates?.map((vote) => {
     function choiceChose() {
@@ -48,22 +66,22 @@ const VotingArea = () => {
         if (election.choices_name[i] === vote) break;
       }
       // console.log(i)
-    //   choiceid = election.choices[i];
-      choiceid=i
-      console.log(choiceid)
+      //   choiceid = election.choices[i];
+      choiceid = i;
+      // console.log(choiceid);
       localStorage.setItem("choiceid", choiceid);
     }
     return (
       <div class="form-check">
         <input
-          className="form-check-input"
+          className="form-check-input "
           type="radio"
           name="selectedCandidate"
           id={vote}
           value={vote}
           onClick={choiceChose}
         />
-        <label class="form-check-label" for="selectedCandidate">
+        <label class="form-check-label body-font" for="selectedCandidate">
           {vote}
         </label>
       </div>
@@ -71,32 +89,51 @@ const VotingArea = () => {
   });
   const castVote = async () => {
     setLoading(true);
-    let response = await fetch("/api/castVote/", {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        election_id: parseInt(electionid),
-        choice_id: parseInt(localStorage.getItem("choiceid")),
-        voter_id: parseInt(id),
-      }),
-    });
-    let data = await response.json();
-    if (response.status===200) {
-      console.log(data);
-      alert("successfully vote casted");
+    let timeoutId = setTimeout(() => {
+      alert("Voting Failed!!!");
       setLoading(false);
-      localStorage.removeItem('choiceid')
-      navigate("/vote-success");
-      localStorage.setItem('votehashe', data.hash)
-    }
-    else{
-        alert('Voting Failed!!!')
-        setLoading(false)
+    }, 60000); // 1 minute timeout
+
+    try {
+      let response = await Promise.race([
+        fetch("/api/castVote/", {
+          credentials: "include",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            election_id: parseInt(electionid),
+            choice_id: parseInt(localStorage.getItem("choiceid")),
+            voter_id: parseInt(id),
+          }),
+        }),
+        new Promise(
+          (_, reject) => setTimeout(() => reject(new Error("Timeout")), 60000) // 1 minute timeout
+        ),
+      ]);
+
+      clearTimeout(timeoutId);
+
+      if (response.status === 200) {
+        let data = await response.json();
+        // console.log(data);
+        alert("successfully vote casted");
+        setLoading(false);
+        localStorage.removeItem("choiceid");
+        navigate("/vote-success");
+        localStorage.setItem("votehashe", data.hash);
+      } else {
+        alert("Voting Failed!!!\n There is a congestion in the blockchain network, please try again later");
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("The blockchain network is busy, please try after some time!!!");
+      setLoading(false);
     }
   };
+
   //   console.log(poll);
   return (
     <div>
@@ -150,14 +187,14 @@ const VotingArea = () => {
       ) : (
         <div>
           <div className="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-            <h1 align="center">Cast Your Vote</h1>
+            <h1 align="center"className="section-header">Cast Your Vote</h1>
           </div>
           <div className="row electiondetails">
             <div className="col-md-6">
-              <h3>Election Name: {name}</h3>
+              <h3 className="section-header">Election Name: {name}</h3>
             </div>
             <div className="col-md-6">
-              <h3>Total Votes Cast: {election.number_of_votes}</h3>
+              <h3 className="section-header">Total Votes Cast: {election.number_of_votes}</h3>
             </div>
           </div>
           <div className="Auth-form-container mt-5">
@@ -166,7 +203,7 @@ const VotingArea = () => {
                 <h3 className="Auth-form-title">Choose your candidate:</h3>
                 <div className="form-group mt-3">{choices}</div>
                 <div className="d-grid gap-2 mt-3">
-                  <button className="btn btn-primary" onClick={castVote}>
+                  <button className="btn btn-primary body-font" onClick={castVote}>
                     Submit
                   </button>
                 </div>

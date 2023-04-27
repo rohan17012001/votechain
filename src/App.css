@@ -37,6 +37,7 @@
 } */
 body{
   margin-right: 10px;
+  /* background-color: #0B2447; */
 }
 /* .background{
   opacity: 0.2;
@@ -145,13 +146,13 @@ label {
 }
 .onlyadmins{
   margin:20px 30px;
-  background-color: #f5a802;
+  background-color: #FFBF00;
   padding: 20px;
   border-radius: 10px;
 }
 .castvote{
   margin:20px 30px;
-  background-color: #f5a802;
+  background-color: #FFBF00;
   padding: 20px;
   border-radius: 10px;
 }
@@ -218,6 +219,10 @@ main {
   border-radius: 10px;
   /* box-shadow: 0 0 35px 15px #2d8bb3; */
 }
+.section-header{
+  font-family: 'Merriweather', serif;
+  /* font-family: 'Castoro Titling', cursive; */
+}
 .hometext1{
   margin-top: 20px;
   padding: 10px;
@@ -238,7 +243,39 @@ main {
   /* border-radius: 10px; */
   /* border: ; */
 }
+.section-content{
+  font-family: 'Josefin Sans', sans-serif;
+  max-width:36%;
+  margin-left: 32%;
+  padding: 10px;
+  box-shadow: 0 0 10px ;
+  border-radius: 10px;
+}
+.body-font{
+  font-family: 'Josefin Sans', sans-serif;
+}
+.unvoted{
+  background-color: #3dabd9;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+.unvoted .votechoices{
+  color: white;
+}
+.voted{
+  background-color: #8fe87b;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+.results{
+  background-color: #B2A4FF;
+  margin-top: 5px;
+  border-radius: 10px;
+}
 .votechoices Link{
+  text-decoration: none;
+}
+.linknoline{
   text-decoration: none;
 }
 .loginportal{
@@ -255,6 +292,21 @@ main {
   width: 100%;
   background-image: linear-gradient(to right, #a9c9d6 , #3dabd9);
 }
+.adminpolls{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.voteclose{
+  margin: 10px;
+  cursor: pointer;
+  color: rgb(198, 39, 39);
+  /* text-shadow: 0 0 10px  rgb(188, 7, 7);; */
+}
+.voteclose:hover{
+  color: #f5a802;
+  /* text-shadow: 0 0 2px #f5a802; */
+}
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -267,6 +319,8 @@ main {
 }
 .electionlink{
   text-decoration: none;
+  /* font-family: 'Merriweather', serif; */
+  font-family: 'Josefin Sans', sans-serif;
 }
 /* Animation */
 @keyframes worm1 {

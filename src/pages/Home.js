@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div>
       <div className="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-        <h1>Welcome to Votechain</h1>
+        <h1 className="section-header">Welcome to Votechain</h1>
       </div>
       {/* <h1>Welcome to Voting System!</h1> */}
       {/* <div className="mainstage">
@@ -52,8 +52,8 @@ const Home = () => {
         </button>
       </div>
       <div className="hometext1">
-        <h2>Welcome to the world of secure and immutable voting</h2>
-        <h2><Link to="/login" >Join now!</Link></h2>
+        <h2 className="section-content">Welcome to the world of secure and immutable voting</h2>
+        <h2><Link to="/login" className="linknoline">Join now!</Link></h2>
       </div>
       {/* <a href="/login">Sign-In</a> */}
     </div>

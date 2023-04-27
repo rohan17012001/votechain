@@ -20,11 +20,12 @@ const VoterCreationSuccess = () => {
             }),
           });
           let data=await response.json()
-          console.log(data)
+          console.log('Welcome Voter!!!')
           setNewvoter(data)
     }
   return (
     <div className='electionsuccess'>
+
       <h1>Voter created successfully!!!</h1>
       <div className='voterdetails'>
         <h4>Name: {newvoter.name}</h4>

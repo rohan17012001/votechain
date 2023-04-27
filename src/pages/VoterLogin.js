@@ -48,7 +48,7 @@ export default function VoterLogin(props) {
     e.preventDefault();
     if (email.endsWith("@iiitl.ac.in")) {
       if (email.trim().length && password.trim().length) {
-        console.log("here", email, password);
+        console.log("here", email);
         let response = await fetch(`/api/login/`, {
           // credentials: "include",
           method: "POST",
@@ -68,13 +68,13 @@ export default function VoterLogin(props) {
           localStorage.setItem("name", data?.name);
           localStorage.setItem("admin", data?.admin);
           console.log(
-            localStorage.getItem("id"),
+            // localStorage.getItem("id"),
             localStorage.getItem("name"),
             localStorage.getItem("admin")
           );
-          console.log(data);
+          console.log('Login successful!');
           if (localStorage.getItem("admin") === "false") {
-            alert("redirecting");
+            // alert("redirecting");
             navigate("/voter-portal");
           } else {
             navigate("/admin-portal");
@@ -91,7 +91,7 @@ export default function VoterLogin(props) {
         // })
         // .then((response) => setToken("mytoken", response.token))
       } else {
-        console.log("Not added properly");
+        alert("No field must be empty");
       }
     } else {
       alert("You can only access this portal using your IIIT Lucknow email ID");
@@ -101,7 +101,7 @@ export default function VoterLogin(props) {
     e.preventDefault();
     if (email.endsWith("@iiitl.ac.in")) {
       if (name.trim().length && email.trim().length && password.trim().length) {
-        console.log("here", email, password);
+        console.log("here", email);
         let response = await fetch(`/api/createVoter/`, {
           credentials: "include",
           method: "POST",
@@ -115,7 +115,7 @@ export default function VoterLogin(props) {
           }),
         });
         let data = await response.json();
-        console.log(data);
+        console.log('Welcome new user!!');
         if (response.status !== 201) {
           let err = [];
           for (const [key, value] of Object.entries(data)) {
@@ -123,7 +123,7 @@ export default function VoterLogin(props) {
             console.log(key, value);
             // alert(key, value);
           }
-          console.log(err);
+          // console.log(err);
           alert(err);
         } else {
           localStorage.setItem("newid", data.id);
@@ -143,7 +143,7 @@ export default function VoterLogin(props) {
   const signInwithgoogle = (e) => {
     e.preventDefault();
     signInWithPopup(auth, provider).then((data) => {
-      console.log(data);
+      // console.log(data);
       setValue(data.user.email);
       localStorage.setItem("googleemail", data.user.email);
     });
@@ -159,17 +159,17 @@ export default function VoterLogin(props) {
           <form className="Auth-form">
             <div className="Auth-form-content">
               <h3 className="Auth-form-title">Sign In</h3>
-              <div className="text-center">
+              <div className="text-cente body-font">
                 Not registered yet?{" "}
-                <span className="link-primary" onClick={changeAuthMode}>
+                <span className="link-primary body-font" onClick={changeAuthMode}>
                   Sign Up
                 </span>
               </div>
               <div className="form-group mt-3">
-                <label>Email address</label>
+                <label className="body-font">Email address</label>
                 <input
                   type="email"
-                  className="form-control mt-1"
+                  className="form-control mt-1 body-font"
                   placeholder="Enter email"
                   value={email}
                   onChange={(e) => {
@@ -178,10 +178,10 @@ export default function VoterLogin(props) {
                 />
               </div>
               <div className="form-group mt-3">
-                <label>Password</label>
+                <label className="body-font">Password</label>
                 <input
                   type="password"
-                  className="form-control mt-1"
+                  className="form-control mt-1 body-font"
                   placeholder="Enter password"
                   value={password}
                   onChange={(e) => {
@@ -190,7 +190,7 @@ export default function VoterLogin(props) {
                 />
               </div>
               <div className="d-grid gap-2 mt-3">
-                <button className="btn btn-primary" onClick={loginBtn}>
+                <button className="btn btn-primary body-font" onClick={loginBtn}>
                   Submit
                 </button>
               </div>
@@ -219,17 +219,17 @@ export default function VoterLogin(props) {
         <form className="Auth-form">
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Sign Up</h3>
-            <div className="text-center">
+            <div className="text-center body-font">
               Already registered?{" "}
-              <span className="link-primary" onClick={changeAuthMode}>
+              <span className="link-primary body-font" onClick={changeAuthMode}>
                 Sign In
               </span>
             </div>
             <div className="form-group mt-3">
-              <label>Full Name</label>
+              <label className="body-font">Full Name</label>
               <input
                 type="text"
-                className="form-control mt-1"
+                className="form-control mt-1 body-font"
                 placeholder="e.g Jane Doe"
                 onChange={(e) => {
                   setName(e.target.value);
@@ -237,10 +237,10 @@ export default function VoterLogin(props) {
               />
             </div>
             <div className="form-group mt-3">
-              <label>Email address</label>
+              <label className="body-font">Email address</label>
               <input
                 type="email"
-                className="form-control mt-1"
+                className="form-control mt-1 body-font"
                 placeholder="Email Address"
                 // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 onChange={(e) => {
@@ -249,10 +249,10 @@ export default function VoterLogin(props) {
               />
             </div>
             <div className="form-group mt-3">
-              <label>Password</label>
+              <label className="body-font">Password</label>
               <input
                 type="password"
-                className="form-control mt-1"
+                className="form-control mt-1 body-font"
                 placeholder="Password"
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -260,7 +260,7 @@ export default function VoterLogin(props) {
               />
             </div>
             <div className="d-grid gap-2 mt-3">
-              <button className="btn btn-primary" onClick={signUpbtn}>
+              <button className="btn btn-primary body-font" onClick={signUpbtn}>
                 Submit
               </button>
             </div>

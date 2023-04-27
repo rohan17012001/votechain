@@ -3,6 +3,7 @@ import { Chart } from "react-google-charts";
 
 const ElectionResult = () => {
   const electionid = localStorage.getItem("closedelectionid");
+  const hasvoted=localStorage.getItem("hasvoted");
   const [electionresults, setElectionResults] = useState([]);
   const [hash, setHash] =useState([])
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ const ElectionResult = () => {
     const elecres = await response.json();
     setElectionResults(elecres);
     setLoading(false);
-    console.log(elecres);
+    console.log('Received Election Result');
   };
   let getChoicefromhash = async()=>{
     let response=await fetch("/api/verifyVote/", {
@@ -68,8 +69,8 @@ const ElectionResult = () => {
       winnername.push(', ')
     }
   }
-  console.log(winnername);
-  console.log(winnervotes);
+  // console.log(winnername);
+  // console.log(winnervotes);
   // for(let i=0; i<votes?.length; i++){
   //   console.log(votes[i])
   // }
@@ -82,28 +83,28 @@ const ElectionResult = () => {
   const resgisteredvoters = totalvotes;
   const dateofelection = new Date(
     localStorage.getItem("electiondate")
-  ).toUTCString();
+  ).toLocaleString();
   // console.log(voteresult)
   return (
     <div>
       <div className="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-        <h1 align="center">Results</h1>
+        <h1 align="center" className="section-header">Results</h1>
       </div>
       <div className="election-info shadow p-2 mb-5 bg-body-tertiary rounded">
         <div className="row mx-5">
           <div className="col-md-6">
-            <p>Election Name: {electionname}</p>
+            <h5 className="body-font">Election Name: {electionname}</h5>
           </div>
           <div className="col-md-6">
-            <p>Registered Voters: {resgisteredvoters}</p>
+            <h5 className="body-font">Registered Voters: {resgisteredvoters}</h5>
           </div>
         </div>
         <div className="row mx-5">
           <div className="col-md-6">
-            <p>Date: {dateofelection}</p>
+            <h5 className="body-font">Date: {dateofelection}</h5>
           </div>
           <div className="col-md-6">
-            <p>Total Votes: {totalvotes}</p>
+            <h5 className="body-font">Total Votes: {totalvotes}</h5>
           </div>
         </div>
       </div>
@@ -128,7 +129,7 @@ const ElectionResult = () => {
           />
         </div>
       </div>
-      <div className="row">
+      <div className="row body-font">
         <div className="col-md-6 winners">
           <h3>Winner: {winnername}</h3>
         </div>
@@ -137,19 +138,21 @@ const ElectionResult = () => {
         </div>
       </div>
       <div>
-        <div className="successvote">
+        {(localStorage.getItem('hasvoted')==="true") && (
+          <div className="successvote">
           <input
             type="email"
-            className="form-control mt-1"
+            className="form-control mt-1 body-font"
             placeholder="Enter your vote hash"
             onChange={(e)=>{
               setHash(e.target.value)
             }}
           />
-          <button type="button" class="btn btn-primary" onClick={getChoicefromhash}>
+          <button type="button" class="btn btn-primary body-font" onClick={getChoicefromhash}>
             Check your vote!
           </button>
         </div>
+        )}
       </div>
     </div>
   );

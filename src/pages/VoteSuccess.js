@@ -18,21 +18,22 @@ const VoteSuccess = () => {
   return (
     <div>
       <div className="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-        <h1 align="center">Your Vote was successful!!!</h1>
+        <h1 align="center" className="section-header">Your Vote was successful!!!</h1>
       </div>
-      <div className="successvote">
+      <div className="successvote body-font">
         <h4>Vote Hash: {hash}</h4>
         <button type="button" class="btn btn-primary" onClick={copyHash}>
           Copy Hash
         </button>
       </div>
-      <div className="sepolia my-5">
+      <div className="sepolia my-5 body-font">
         <h4>
           Go to{" "}
           <a
             href="https://sepolia.etherscan.io/"
             target="_blank"
             onClick={goBack}
+            className="linknoline"
           >
             sepolia etherscan
           </a>{" "}
@@ -40,7 +41,7 @@ const VoteSuccess = () => {
         </h4>
       </div>
       <div className="sepolia my-5">
-      <button type="button" class="btn btn-primary" onClick={goBack}>Go Back</button>
+      <button type="button" class="btn btn-primary body-font" onClick={goBack}>Go Back</button>
       </div>
     </div>
   );

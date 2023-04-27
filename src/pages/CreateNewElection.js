@@ -24,7 +24,7 @@ const CreateNewElection = () => {
         <label>Candidate #{cand + 1}:</label>
         <input
           type="text"
-          className="form-control mt-1"
+          className="form-control mt-1 body-font"
           placeholder="Candidate Name"
           // value={title}
           onChange={(e) => {
@@ -53,15 +53,15 @@ const CreateNewElection = () => {
         }),
       });
       let data = await response.json();
-      console.log(data);
+      console.log('New election created???');
       setLoading(false);
-      alert(data);
+      // alert(data);
 
       setTitle("");
       setChoiceNo();
       if(response.status===200){
         localStorage.setItem('createelection', data.election.id)
-        console.log(data.election.id)
+        console.log('Election Created!!!!')
         navigate('/election-creation-success')
       }
     } else {
@@ -126,7 +126,7 @@ const CreateNewElection = () => {
                 <label>Election Title:</label>
                 <input
                   type="text"
-                  className="form-control mt-1"
+                  className="form-control mt-1 body-font"
                   placeholder="e.g Student Council Elections"
                   value={title}
                   onChange={(e) => {
@@ -138,7 +138,7 @@ const CreateNewElection = () => {
                 <label>No. of Choices</label>
                 <input
                   type="number"
-                  className="form-control mt-1"
+                  className="form-control mt-1 body-font"
                   placeholder="should be greater than 2"
                   value={choiceno}
                   onChange={setCandidates}
@@ -146,7 +146,7 @@ const CreateNewElection = () => {
               </div>
               <div>{candidate.length ? addCandidate() : null}</div>
               <div className="d-grid gap-2 mt-3">
-                <button className="btn btn-primary" onClick={createElection}>
+                <button className="btn btn-primary body-font" onClick={createElection}>
                   Submit
                 </button>
               </div>
