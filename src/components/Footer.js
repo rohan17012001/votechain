@@ -11,7 +11,7 @@ const Footer = () => {
             <div class="row">
               <div class="col-md-3 col-6 pl-5 pl-small-15">
                 <div class="footertitle">
-                  <a href="/">
+                  <a href="https://rohan17012001.github.io/votechain">
                     <img
                       src={Logo}
                       width="100px"
