@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
-import { auth, provider } from "../firebase";
-import { signInWithPopup } from "firebase/auth";
+// import { useCookies } from "react-cookie";
+// import { auth, provider } from "../firebase";
+// import { signInWithPopup } from "firebase/auth";
 import Logo from "../assets/background.png";
 // import { Link } from "react-router-dom";
 
@@ -15,8 +15,8 @@ export default function VoterLogin(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [value, setValue] = useState("");
-  const [token, setToken] = useCookies(["mytoken"]);
+  // const [value, setValue] = useState("");
+  // const [token, setToken] = useCookies(["mytoken"]);
   let navigate = useNavigate();
 
   // useEffect(() => {
@@ -140,17 +140,17 @@ export default function VoterLogin(props) {
   };
 
   // Sign In with Google
-  const signInwithgoogle = (e) => {
-    e.preventDefault();
-    signInWithPopup(auth, provider).then((data) => {
-      // console.log(data);
-      setValue(data.user.email);
-      localStorage.setItem("googleemail", data.user.email);
-    });
-  };
-  useEffect(() => {
-    setValue(localStorage.getItem("googleemail"));
-  });
+  // const signInwithgoogle = (e) => {
+  //   e.preventDefault();
+  //   signInWithPopup(auth, provider).then((data) => {
+  //     // console.log(data);
+  //     setValue(data.user.email);
+  //     localStorage.setItem("googleemail", data.user.email);
+  //   });
+  // };
+  // useEffect(() => {
+  //   setValue(localStorage.getItem("googleemail"));
+  // });
 
   if (authMode === "signin") {
     return (
@@ -206,7 +206,7 @@ export default function VoterLogin(props) {
           </form>
         </div>
         <div className="loginimage">
-          <img src={Logo} className="loginimg" />
+          <img src={Logo} alt="sideimage" className="loginimg" />
         </div>
       </div>
     );
@@ -271,7 +271,7 @@ export default function VoterLogin(props) {
         </form>
       </div>
       <div className="loginimage">
-        <img src={Logo} className="loginimg"/>
+        <img src={Logo} alt="sideimage" className="loginimg"/>
       </div>
     </div>
     <div className="fixit"></div>

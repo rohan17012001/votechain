@@ -42,7 +42,11 @@ const ElectionResult = () => {
       }),
     })
     let data=await response.json()
-    alert('You voted for '+data.choice.name)
+    if(response.status===200){
+    alert('You voted for '+data.choice.name)}
+    else{
+      alert('Please enter the hash of the vote which you received after casting vote in THIS election.')
+    }
   }
   // console.log(electionresults);
   const votes = electionresults.votes;

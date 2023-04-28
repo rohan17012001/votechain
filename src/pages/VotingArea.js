@@ -4,15 +4,35 @@ import { useNavigate } from "react-router-dom";
 // import { Routes } from "react-router-dom";
 
 const VotingArea = () => {
+  const electionid = localStorage.getItem("electionid");
   const id = localStorage.getItem("id");
   const [election, setElection] = useState([]);
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
 
   useEffect(() => {
+    let getelection = async () => {
+      let response = await fetch("/api/getElection/", {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          election_id: electionid,
+        }),
+      });
+      let data = await response.json();
+      if (response.status !== 200) {
+        alert("Voting Failed!!!\n Redirecting.....");
+        window.location.reload(false);
+      }
+      // console.log(data);
+      setElection(data);
+    };
     getelection();
-  }, []);
-  const electionid = localStorage.getItem("electionid");
+  }, [electionid]);
+  
   //   const [election, setElection] = useState();
   //   const poll = localStorage.getItem("electionchoicesname");
   const name = localStorage.getItem("electionname");
@@ -37,25 +57,7 @@ const VotingArea = () => {
 
   //   return response;
   // }
-  let getelection = async () => {
-    let response = await fetch("/api/getElection/", {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        election_id: electionid,
-      }),
-    });
-    let data = await response.json();
-    if (response.status != 200) {
-      alert("Voting Failed!!!\n Redirecting.....");
-      window.location.reload(false);
-    }
-    // console.log(data);
-    setElection(data);
-  };
+  
   const pp = election.choices_name;
   // console.log(pp);
   const candidates = pp;
@@ -90,7 +92,7 @@ const VotingArea = () => {
   const castVote = async () => {
     setLoading(true);
     let timeoutId = setTimeout(() => {
-      alert("Voting Failed!!!");
+      alert("Voting Failed!!!\nTimeout");
       setLoading(false);
     }, 60000); // 1 minute timeout
 

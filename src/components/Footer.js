@@ -44,10 +44,10 @@ const Footer = () => {
                   <h3>Coming soon</h3>
                   <ul>
                     <li>
-                      <a href="javascript:;">Admin only- stop election</a>
+                      Admin only- stop election
                     </li>
                     <li>
-                      <a href="javascript:;">Firebase Login</a>
+                      Firebase Login
                     </li>
                     {/* <li>
                       <a href="javascript:;">Kids Fashion</a>
@@ -60,16 +60,16 @@ const Footer = () => {
                   <h3>Developed by</h3>
                   <ul>
                     <li>
-                      <a href="">Ravi Maurya</a>
+                      Ravi Maurya
                     </li>
                     <li>
-                      <a href="javascript:;">Mohd Shaban</a>
+                      Mohd Shaban
                     </li>
                     <li>
-                      <a href="javascript:;">Maurya Abhishek Kumar</a>
+                      Maurya Abhishek Kumar
                     </li>
                     <li>
-                      <a href="javascript:;">Rohan</a>
+                      Rohan
                     </li>
                   </ul>
                 </div>

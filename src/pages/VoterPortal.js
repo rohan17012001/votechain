@@ -6,11 +6,49 @@ import { useNavigate } from "react-router-dom";
 
 const VoterPortal = () => {
   let navigate = useNavigate();
-  const id = localStorage.getItem("id");
+  
   const name = localStorage.getItem("name");
   let [runningpolls, setRunningpolls] = useState([]);
   let [completedpolls, setCompletedpolls] = useState([]);
   useEffect(() => {
+    const id = localStorage.getItem("id");
+    let getRunningpolls = async () => {
+      try {
+        let response = await fetchWithTimeout("/api/getOngoingVOterElections/", {
+          timeout: 30000,
+          credentials: "include",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            voter_id: parseInt(id),
+          }),
+        });
+        let data = await response.json();
+        console.log("Fetched some ongoing election for you!!!");
+        setRunningpolls(data);
+      } catch (error) {
+        alert("Error: Request Timed out! Please try again");
+        navigate("/voter-portal");
+      }
+    };
+    let getCompletedpolls = async () => {
+      let response = await fetch("/api/getClosedVoterElections/", {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          voter_id: parseInt(id),
+        }),
+      });
+      let data = await response.json();
+      console.log("Now you can see results for closed elections. Yippee!!");
+      console.log(data)
+      setCompletedpolls(data);
+    };
     getRunningpolls();
     getCompletedpolls();
   }, []);
@@ -28,43 +66,6 @@ const VoterPortal = () => {
 
     return response;
   }
-  let getRunningpolls = async () => {
-    try {
-      let response = await fetchWithTimeout("/api/getOngoingVOterElections/", {
-        timeout: 30000,
-        credentials: "include",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          voter_id: parseInt(id),
-        }),
-      });
-      let data = await response.json();
-      console.log("Fetched some ongoing election for you!!!");
-      setRunningpolls(data);
-    } catch (error) {
-      alert("Error: Request Timed out! Please try again");
-      navigate("/voter-portal");
-    }
-  };
-  let getCompletedpolls = async () => {
-    let response = await fetch("/api/getClosedVoterElections/", {
-      credentials: "include",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        voter_id: parseInt(id),
-      }),
-    });
-    let data = await response.json();
-    console.log("Now you can see results for closed elections. Yippee!!");
-    console.log(data)
-    setCompletedpolls(data);
-  };
   return (
     <div>
       <div className="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
