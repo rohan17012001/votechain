@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/votechain/static/css/main.9b2a7676.css",
-    "main.js": "/votechain/static/js/main.38c9cbd4.js",
+    "main.js": "/votechain/static/js/main.c576f27a.js",
     "static/js/787.f1330332.chunk.js": "/votechain/static/js/787.f1330332.chunk.js",
     "static/media/background.png": "/votechain/static/media/background.fa693ac9fe9008e236e1.png",
     "static/media/Whyisvotechainbetter.png": "/votechain/static/media/Whyisvotechainbetter.aa4d70fa0a27c3db9cc9.png",
@@ -10,11 +10,11 @@
     "static/media/Theproblemwearesolving.png": "/votechain/static/media/Theproblemwearesolving.e4e329e5d171a1c28399.png",
     "index.html": "/votechain/index.html",
     "main.9b2a7676.css.map": "/votechain/static/css/main.9b2a7676.css.map",
-    "main.38c9cbd4.js.map": "/votechain/static/js/main.38c9cbd4.js.map",
+    "main.c576f27a.js.map": "/votechain/static/js/main.c576f27a.js.map",
     "787.f1330332.chunk.js.map": "/votechain/static/js/787.f1330332.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9b2a7676.css",
-    "static/js/main.38c9cbd4.js"
+    "static/js/main.c576f27a.js"
   ]
 }
