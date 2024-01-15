@@ -15,7 +15,7 @@ export default function Header() {
     <div className="App-header" id="top">
       <nav class="navbar navbar-expand-lg bg-body-tertiary ">
         <div class="container-fluid">
-          <a class="navbar-brand" href="https://rohan17012001.github.io/votechain">
+          <a class="navbar-brand" href="/">
             <img src={Logo} className="img img-fluid navlogo" />
           </a>
           <button

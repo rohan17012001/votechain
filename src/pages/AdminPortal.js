@@ -98,7 +98,7 @@ const AdminPortal = () => {
                   <div className="adminpolls unvoted">
                     <Link to="/voting-area" className="electionlink">
                       <div
-                        key={key}
+                        key={poll.id}
                         className="vote-list-item votechoices"
                         onClick={getElectionDetails}
                       >

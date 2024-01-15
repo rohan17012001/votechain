@@ -94,7 +94,7 @@ const VotingArea = () => {
     let timeoutId = setTimeout(() => {
       alert("Voting Failed!!!\nTimeout");
       setLoading(false);
-    }, 60000); // 1 minute timeout
+    }, 120000); // 1 minute timeout
 
     try {
       let response = await Promise.race([
@@ -117,7 +117,7 @@ const VotingArea = () => {
 
       clearTimeout(timeoutId);
 
-      if (response.status === 200) {
+      if (response) {
         let data = await response.json();
         // console.log(data);
         alert("successfully vote casted");

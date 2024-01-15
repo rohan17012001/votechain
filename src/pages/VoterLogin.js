@@ -225,6 +225,10 @@ export default function VoterLogin(props) {
                 Sign In
               </span>
             </div>
+            <div className="text-center body-font">
+              Please signup with your email ID ending with @iiitl.ac.in
+            </div>
+
             <div className="form-group mt-3">
               <label className="body-font">Full Name</label>
               <input

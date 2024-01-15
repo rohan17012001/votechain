@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <Header/>
       <Routes>
-        <Route path='https://rohan17012001.github.io/votechain' element={<Home />}/>
+        <Route path='/' element={<Home />}/>
         <Route path='/login' element={<VoterLogin />} />
         <Route path='/active-elections' element={<ActiveElections />} />
         <Route path='/create-new-election' element={<CreateNewElection />} />

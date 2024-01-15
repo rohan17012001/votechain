@@ -67,10 +67,11 @@ const ElectionResult = () => {
     }
   }
   for (let i = 0; i < votes?.length; i++) {
-    if (votes[i] == winnervotes) {
+    if (votes[i] === winnervotes) {
       winnername.push(candidates[i].name);
-      if(i<votes?.length -1)
-      winnername.push(', ')
+      // if(i<votes?.length -1){
+      //   winnername.push(', ')
+      // }
     }
   }
   // console.log(winnername);
@@ -113,7 +114,7 @@ const ElectionResult = () => {
         </div>
       </div>
       <div className="row mx-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <div className="col-md-6 charts">
+        <div className="col-mx-10 charts">
           <Chart
             chartType="PieChart"
             data={data}
@@ -122,7 +123,7 @@ const ElectionResult = () => {
             height={"400px"}
           />
         </div>
-        <div className="col-md-6 charts">
+        <div className="col-mx-10 charts">
           <Chart
             chartType="Bar"
             width="100%"
@@ -135,7 +136,7 @@ const ElectionResult = () => {
       </div>
       <div className="row body-font">
         <div className="col-md-6 winners">
-          <h3>Winner: {winnername}</h3>
+          <h3>Winner: {winnername.join(", ")}</h3>
         </div>
         <div className="col-md-6 winners">
           <h3>Votes: {winnervotes}</h3>
