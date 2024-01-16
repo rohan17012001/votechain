@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# This is the frontend to the Votechain web application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To access the backend of the project, [Click here][https://github.com/Ravi-Maurya74/BlockchainVoting]
+
+<!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
+
+<!-- ## Why Votechain
+
+1. A decentralised voting system, 
 
 ## Available Scripts
 
@@ -67,4 +73,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
