@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const VoteSuccess = () => {
   const hash = localStorage.getItem("votehashe");
@@ -22,7 +22,7 @@ const VoteSuccess = () => {
       </div>
       <div className="successvote body-font">
         <h4>Vote Hash: {hash}</h4>
-        <button type="button" class="btn btn-primary" onClick={copyHash}>
+        <button type="button" className="btn btn-primary" onClick={copyHash}>
           Copy Hash
         </button>
       </div>
@@ -32,6 +32,7 @@ const VoteSuccess = () => {
           <a
             href="https://sepolia.etherscan.io/"
             target="_blank"
+            rel="noopener"
             onClick={goBack}
             className="linknoline"
           >
@@ -41,7 +42,7 @@ const VoteSuccess = () => {
         </h4>
       </div>
       <div className="sepolia my-5">
-      <button type="button" class="btn btn-primary body-font" onClick={goBack}>Go Back</button>
+      <button type="button" className="btn btn-primary body-font" onClick={goBack}>Go Back</button>
       </div>
     </div>
   );

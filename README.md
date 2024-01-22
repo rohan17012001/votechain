@@ -1,6 +1,6 @@
 # This is the frontend to the Votechain web application
 
-To access the backend of the project, [Click here][https://github.com/Ravi-Maurya74/BlockchainVoting]
+To access the backend of the project, [https://github.com/Ravi-Maurya74/BlockchainVoting]
 
 <!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
 

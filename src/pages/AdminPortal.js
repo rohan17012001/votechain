@@ -13,6 +13,7 @@ const AdminPortal = () => {
   }, []);
   let getRunningpolls = async () => {
     let response = await fetch("/api/getOngoingVOterElections/", {
+      mode:"cors",
       credentials: "include",
       method: "POST",
       headers: {
@@ -28,6 +29,7 @@ const AdminPortal = () => {
   };
   let getCompletedpolls = async () => {
     let response = await fetch("/api/getClosedVoterElections/", {
+      mode:"cors",
       credentials: "include",
       method: "POST",
       headers: {
@@ -78,6 +80,7 @@ const AdminPortal = () => {
                   );
                 } else {
                   let response = await fetch("/api/closePoll/", {
+                    mode:"cors",
                     credentials: "include",
                     method: "POST",
                     headers: {
@@ -95,10 +98,10 @@ const AdminPortal = () => {
               };
               if (poll.has_voted === false) {
                 return (
-                  <div className="adminpolls unvoted">
+                  <div className="adminpolls unvoted" key={poll.id}>
                     <Link to="/voting-area" className="electionlink">
                       <div
-                        key={poll.id}
+                        
                         className="vote-list-item votechoices"
                         onClick={getElectionDetails}
                       >
@@ -117,18 +120,18 @@ const AdminPortal = () => {
                 );
               } else {
                 return (
-                  <div className="adminpolls voted">
+                  <div className="adminpolls voted" key={key}>
                     <div
-                      key={key}
+                      
                       className="vote-list-item text-success electionlink"
                       onClick={getElectionDetails}
                     >
-                      <h3>
-                        {poll.title}{" "}
+                      <div>
+                        <h3>{poll.title}{" "}</h3>
                         <h4>
                           <i>Already Voted</i>
                         </h4>
-                      </h3>
+                      </div>
                     </div>
                     {/* <i
                       className="fa-solid fa-xmark fa-lg voteclose"
@@ -156,10 +159,10 @@ const AdminPortal = () => {
               }
               if (poll.has_voted === false) {
                 return (
-                  <div className="results">
+                  <div className="results" key={key}>
                     <Link to="/election-result" className="electionlink">
                       <div
-                        key={key}
+                        
                         className="vote-list-item"
                         onClick={getClosedElectionDetails}
                       >
@@ -170,10 +173,10 @@ const AdminPortal = () => {
                 );
               } else {
                 return (
-                  <div className="results">
+                  <div className="results" key={key}>
                     <Link to="/election-result" className="electionlink">
                       <div
-                        key={key}
+                        
                         className="vote-list-item"
                         onClick={getClosedElectionDetails}
                       >

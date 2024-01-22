@@ -15,6 +15,7 @@ const ElectionResult = () => {
   let getElectionResults = async () => {
     setLoading(true);
     let response = await fetch("/api/getElectionResult/", {
+      mode:"cors",
       credentials: "include",
       method: "POST",
       headers: {
@@ -31,6 +32,7 @@ const ElectionResult = () => {
   };
   let getChoicefromhash = async()=>{
     let response=await fetch("/api/verifyVote/", {
+      mode:"cors",
       credentials: "include",
       method: "POST",
       headers: {
@@ -153,7 +155,7 @@ const ElectionResult = () => {
               setHash(e.target.value)
             }}
           />
-          <button type="button" class="btn btn-primary body-font" onClick={getChoicefromhash}>
+          <button type="button" className="btn btn-primary body-font" onClick={getChoicefromhash}>
             Check your vote!
           </button>
         </div>
@@ -169,7 +171,7 @@ const ElectionResult = () => {
 //       <div className="loader">
 //         <main>
 //           <svg
-//             class="ip"
+//             className="ip"
 //             viewBox="0 0 256 128"
 //             width="256px"
 //             height="128px"
@@ -190,19 +192,19 @@ const ElectionResult = () => {
 //               </linearGradient>
 //             </defs>
 //             <g fill="none" stroke-linecap="round" stroke-width="16">
-//               <g class="ip__track" stroke="#ddd">
+//               <g className="ip__track" stroke="#ddd">
 //                 <path d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56" />
 //                 <path d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64" />
 //               </g>
 //               <g stroke-dasharray="180 656">
 //                 <path
-//                   class="ip__worm1"
+//                   className="ip__worm1"
 //                   stroke="url(#grad1)"
 //                   stroke-dashoffset="0"
 //                   d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56"
 //                 />
 //                 <path
-//                   class="ip__worm2"
+//                   className="ip__worm2"
 //                   stroke="url(#grad2)"
 //                   stroke-dashoffset="358"
 //                   d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64"

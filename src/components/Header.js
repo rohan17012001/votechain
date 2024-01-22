@@ -13,13 +13,13 @@ export default function Header() {
     }
   return (
     <div className="App-header" id="top">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary ">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/">
             <img src={Logo} className="img img-fluid navlogo" />
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -27,33 +27,33 @@ export default function Header() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/">
                   Home
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">
+              <li className="nav-item">
+                <a className="nav-link" href="/login">
                   Login
                 </a>
               </li>
               {localStorage.getItem(
                 "id") && (
-                    <li class="nav-item">
+                    <li className="nav-item">
                       <a className="nav-link text-danger" onClick={logOut}>
                         Log Out
                       </a>
                     </li>
                   )}
-              {/* <li class="nav-item">
-                                <a class="nav-link" href="abs.jj">pp</a>
+              {/* <li className="nav-item">
+                                <a className="nav-link" href="abs.jj">pp</a>
                             </li> */}
-              {/* <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+              {/* <li className="nav-item">
+          <a className="nav-link disabled">Disabled</a>
         </li> */}
             </ul>
           </div>

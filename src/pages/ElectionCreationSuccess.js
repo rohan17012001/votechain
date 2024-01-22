@@ -10,6 +10,7 @@ const ElectionCreationSuccess = () => {
   }, []);
   const getElection = async () => {
     let response = await fetch("/api/getElection/", {
+      mode:"cors",
       credentials: "include",
       method: "POST",
       headers: {

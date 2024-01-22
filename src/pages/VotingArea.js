@@ -61,7 +61,7 @@ const VotingArea = () => {
   const pp = election.choices_name;
   // console.log(pp);
   const candidates = pp;
-  const choices = candidates?.map((vote) => {
+  const choices = candidates?.map((vote, key) => {
     function choiceChose() {
       let choiceid, i;
       for (i = 0; i < election.choices.length; i++) {
@@ -74,7 +74,7 @@ const VotingArea = () => {
       localStorage.setItem("choiceid", choiceid);
     }
     return (
-      <div class="form-check">
+      <div className="form-check" key={key}>
         <input
           className="form-check-input "
           type="radio"
@@ -83,7 +83,7 @@ const VotingArea = () => {
           value={vote}
           onClick={choiceChose}
         />
-        <label class="form-check-label body-font" for="selectedCandidate">
+        <label className="form-check-label body-font" htmlFor="selectedCandidate">
           {vote}
         </label>
       </div>
@@ -143,7 +143,7 @@ const VotingArea = () => {
         <div className="loader">
           <main>
             <svg
-              class="ip"
+              className="ip"
               viewBox="0 0 256 128"
               width="256px"
               height="128px"
@@ -151,34 +151,34 @@ const VotingArea = () => {
             >
               <defs>
                 <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#5ebd3e" />
-                  <stop offset="33%" stop-color="#ffb900" />
-                  <stop offset="67%" stop-color="#f78200" />
-                  <stop offset="100%" stop-color="#e23838" />
+                  <stop offset="0%" stopColor="#5ebd3e" />
+                  <stop offset="33%" stopColor="#ffb900" />
+                  <stop offset="67%" stopColor="#f78200" />
+                  <stop offset="100%" stopColor="#e23838" />
                 </linearGradient>
                 <linearGradient id="grad2" x1="1" y1="0" x2="0" y2="0">
-                  <stop offset="0%" stop-color="#e23838" />
-                  <stop offset="33%" stop-color="#973999" />
-                  <stop offset="67%" stop-color="#009cdf" />
-                  <stop offset="100%" stop-color="#5ebd3e" />
+                  <stop offset="0%" stopColor="#e23838" />
+                  <stop offset="33%" stopColor="#973999" />
+                  <stop offset="67%" stopColor="#009cdf" />
+                  <stop offset="100%" stopColor="#5ebd3e" />
                 </linearGradient>
               </defs>
-              <g fill="none" stroke-linecap="round" stroke-width="16">
-                <g class="ip__track" stroke="#ddd">
+              <g fill="none" strokeLinecap="round" strokeWidth="16">
+                <g className="ip__track" stroke="#ddd">
                   <path d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56" />
                   <path d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64" />
                 </g>
-                <g stroke-dasharray="180 656">
+                <g strokeDasharray="180 656">
                   <path
-                    class="ip__worm1"
+                    className="ip__worm1"
                     stroke="url(#grad1)"
-                    stroke-dashoffset="0"
+                    strokeDashoffset="0"
                     d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56"
                   />
                   <path
-                    class="ip__worm2"
+                    className="ip__worm2"
                     stroke="url(#grad2)"
-                    stroke-dashoffset="358"
+                    strokeDashoffset="358"
                     d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64"
                   />
                 </g>

@@ -10,6 +10,7 @@ const VoterCreationSuccess = () => {
     },[])
     let getNewvoter=async()=>{
         let response= await fetch(`/api/identifyVoter/`, {
+          mode:"cors",
             credentials: "include",
             method: "POST",
             headers: {

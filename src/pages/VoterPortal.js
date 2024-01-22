@@ -87,10 +87,9 @@ const VoterPortal = () => {
           }
           if (poll.has_voted === false) {
             return (
-              <div className="adminpolls unvoted">
+              <div className="adminpolls unvoted" key={key}>
                 <Link to="/voting-area" className="electionlink">
                   <div
-                    key={key}
                     className="vote-list-item votechoices"
                     onClick={getElectionDetails}
                   >
@@ -101,18 +100,17 @@ const VoterPortal = () => {
             );
           } else {
             return (
-              <div className="adminpolls voted">
+              <div className="adminpolls voted" key={key}>
                 <div
-                  key={key}
                   className="vote-list-item text-success electionlink"
                   onClick={getElectionDetails}
                 >
-                  <h3>
-                    {poll.title}{" "}
+                  <div>
+                    <h3>{poll.title}{" "}</h3>
                     <h4>
                       <i>Already Voted</i>
                     </h4>
-                  </h3>
+                  </div>
                 </div>
               </div>
             );
@@ -131,10 +129,9 @@ const VoterPortal = () => {
             localStorage.setItem("hasvoted", poll.has_voted);
           }
           return (
-            <div className="results">
+            <div className="results" key={key}>
               <Link to="/election-result" className="electionlink">
                 <div
-                  key={key}
                   className="vote-list-item"
                   onClick={getClosedElectionDetails}
                 >

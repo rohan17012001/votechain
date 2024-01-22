@@ -50,7 +50,8 @@ export default function VoterLogin(props) {
       if (email.trim().length && password.trim().length) {
         console.log("here", email);
         let response = await fetch(`/api/login/`, {
-          // credentials: "include",
+          credentials: "include",
+          mode:"cors",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
