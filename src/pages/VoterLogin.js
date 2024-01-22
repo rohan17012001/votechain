@@ -106,6 +106,7 @@ export default function VoterLogin(props) {
         let response = await fetch(`/api/createVoter/`, {
           credentials: "include",
           method: "POST",
+          mode:"cors",
           headers: {
             "Content-Type": "application/json",
           },

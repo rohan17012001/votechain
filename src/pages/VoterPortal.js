@@ -37,6 +37,7 @@ const VoterPortal = () => {
       let response = await fetch("/api/getClosedVoterElections/", {
         credentials: "include",
         method: "POST",
+        mode:"cors",
         headers: {
           "Content-Type": "application/json",
         },

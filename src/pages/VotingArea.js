@@ -13,6 +13,7 @@ const VotingArea = () => {
   useEffect(() => {
     let getelection = async () => {
       let response = await fetch("/api/getElection/", {
+        mode:"cors",
         credentials: "include",
         method: "POST",
         headers: {
@@ -100,6 +101,7 @@ const VotingArea = () => {
       let response = await Promise.race([
         fetch("/api/castVote/", {
           credentials: "include",
+          mode:"cors",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
